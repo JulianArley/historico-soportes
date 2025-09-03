@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0b416450-6e23-442c-b9a1-621ba142bf0d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[select PacIdentificacion,PacNombres,PacApellidos,count(*) as 'SoportesRealizados'
+from dbo.soportes inner join dbo.pacientes on PacIdentificacion=tecnologoSoporteFK
+group by PacIdentificacion,PacNombres,PacApellidos]]>
+	</queryString>
+	<field name="PacIdentificacion" class="java.lang.Integer"/>
+	<field name="PacNombres" class="java.lang.String"/>
+	<field name="PacApellidos" class="java.lang.String"/>
+	<field name="SoportesRealizados" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="13" y="0" width="263" height="33" forecolor="#CC0000" uuid="889ff1fb-3754-4d58-ac57-9af1d56296e5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[POLLO ANDINO ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="359" y="0" width="154" height="70" uuid="9e4379bd-a06c-4d2f-b671-4d9d2acd1c0d"/>
+				<imageExpression><![CDATA["C:\\Users\\Soporte 2\\Documents\\NetBeansProjects\\ProyectoCitas\\src\\imagenes\\image002.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="SubTitle" x="13" y="33" width="252" height="22" uuid="11055d73-84c3-4030-8522-8e80dac6cfee"/>
+				<text><![CDATA[Informe de soportes realizados]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="6ae565b3-07e3-4c1b-ad38-d9829a86f43e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="138" height="15" uuid="992f1fea-65bc-4425-b5b5-119104ac704c"/>
+				<text><![CDATA[Identificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="138" height="15" uuid="cb9fd12e-8135-4336-8af9-330d3e927365"/>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="138" height="15" uuid="f6667d9e-0f6d-4dd2-957f-da48d8b7891a"/>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="138" height="15" uuid="9a45c345-2635-45dd-94fc-4c6f4ab1618d"/>
+				<text><![CDATA[Soportes Realizados]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="7816e77c-b9e2-4c64-8382-281c691d3c2d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="138" height="15" uuid="48fdde6c-7253-4d46-8168-011e24d69aef"/>
+				<textFieldExpression><![CDATA[$F{PacIdentificacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="138" height="15" uuid="278b2104-32c5-44b9-b7ba-007deb379b98"/>
+				<textFieldExpression><![CDATA[$F{PacNombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="138" height="15" uuid="95a2e0d9-66da-4224-9036-a54ac1ac3399"/>
+				<textFieldExpression><![CDATA[$F{PacApellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="138" height="15" uuid="6f17bac0-fbd6-415b-be1d-e0d3aa48128a"/>
+				<textFieldExpression><![CDATA[$F{SoportesRealizados}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="fbce31c8-c376-4e66-92d8-0463e87553bb"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="44f0c244-97d3-4962-b61c-7dcb15cf3c3f"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="e7f7c213-a79b-47ff-ac80-aa0588efb450"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="96d70c33-2377-4124-9c1d-de0464290139"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
